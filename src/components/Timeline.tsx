@@ -107,7 +107,7 @@ const Timeline = () => {
           "Robust PDF Malware Detection with Image Visualization and Processing
           Techniques," 2019 2nd International Conference on Data Intelligence and Security (ICDIS) 
           &nbsp;
-          <a href='https://ieeexplore.ieee.org/abstract/document/8855273'>https://ieeexplore.ieee.org/abstract/document/8855273</a>
+          <a href='https://ieeexplore.ieee.org/abstract/document/8855273'>https://ieeexplore.ieee.org/</a>
         </p>
       </>,
       icon: <FaBriefcase />,
