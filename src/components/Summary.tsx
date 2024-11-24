@@ -1,4 +1,6 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import Image from 'react-bootstrap/Image';
+import HeadshotImg from "../assets/headshot.jpg";
 
 const Summary = () => {
   return (
@@ -7,28 +9,24 @@ const Summary = () => {
         <Row className="align-items-center">
           <Col xs={12} md={4} className="text-center">
             {/* Headshot image */}
-            <div className="circle-image-container">
-              <img
-                src="path-to-your-image.jpg"  // Replace with your image path
-                alt="Your Name"
-                className="circle-image"
-              />
-            </div>
+              <Image src={HeadshotImg} roundedCircle fluid />
           </Col>
           <Col xs={12} md={8}>
             {/* Summary text */}
             <Card className="border-0 shadow-sm">
               <Card.Body>
-                <h2>Hi, I'm [Your Name]</h2>
+                <h2>Hi, I'm Andrew</h2>
                 <p>
-                  I am a passionate and driven software developer with experience in
-                  building web applications using modern technologies such as React, 
-                  JavaScript, HTML, CSS, and Bootstrap. I have a keen interest in problem-solving, 
-                  and I am always looking for opportunities to learn and grow as a developer.
-                </p>
-                <p>
-                  I specialize in creating user-friendly, efficient, and responsive web experiences, 
-                  and I am always exploring new ways to enhance the functionality and design of my projects.
+                  With over three years of professional experience, my role as a Software Developer
+                  at Epic honed my expertise in full stack .NET web app dev, while my time as an
+                  Associate Instructor at Indiana University Bloomington demonstrated my capacity
+                  for education and mentorship. Committed to leveraging my programming skills to
+                  develop innovative solutions, I am guided by a mission to empower technology
+                  with practical and academic insights. My core competencies lie in crafting robust
+                  code and fostering learning environments, reflecting my dedication to quality and
+                  growth. At Epic, I embraced the challenge of enhancing software that impacts
+                  lives, aligning my efforts with the company's vision for transformative
+                  healthcare.
                 </p>
               </Card.Body>
             </Card>
