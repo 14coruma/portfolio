@@ -1,4 +1,5 @@
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import { useState } from 'react';
+import { Container, Row, Col, ListGroup, Card, Accordion, Button, Modal } from 'react-bootstrap';
 import { FaBriefcase, FaGraduationCap, FaGlobeAmericas } from 'react-icons/fa'; // Optionally use icons for added flair
 
 const Timeline = () => {
@@ -114,8 +115,58 @@ const Timeline = () => {
     },
   ];
 
+  const [modalState, setModalState] = useState([false, false]);
+  function handleModalStateChange(id: number, show: boolean) {
+    const newState = [...modalState];
+    newState[id] = show;
+    setModalState(newState);
+  }
+
   return (
     <section id="timeline" className="py-5">
+      <Container>
+        <Row className="justify-content-center">
+          <Col>
+            <Card className="p-3" style={{height: '200px'}}>
+              <Card.Title>Experience</Card.Title>
+              <Card.Subtitle>Location</Card.Subtitle>
+              <Card.Text>Description</Card.Text>
+              <Button onClick={() => handleModalStateChange(0, true)}>See more</Button>
+              <Modal show={modalState[0]} onHide={() => handleModalStateChange(0, false)} centered>
+                <Modal.Header closeButton>
+                  <Modal.Title>Experience</Modal.Title>
+                </Modal.Header>                
+                <Modal.Body>
+                  Summary of my experience!
+                </Modal.Body>
+              </Modal>
+            </Card>
+          </Col>
+          <Col xs={1}>
+            <div className="vr" style={{height: '200px'}}></div>
+          </Col>
+          <Col></Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col></Col>
+          <Col xs={1}>
+            <div className="vr" style={{height: '100px'}}></div>
+          </Col>
+          <Col></Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col></Col>
+          <Col xs={1}>
+            <div className="vr" style={{height: '50px'}}></div>
+          </Col>
+          <Col>
+            <Card style={{height: '50px'}}>
+              <Card.Title>Experience</Card.Title>
+              <Card.Subtitle>Location</Card.Subtitle>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
       <Container>
         <Row className="align-items-start">
           <Col xs={12}>
