@@ -24,9 +24,7 @@ const Summary = () => {
                   develop innovative solutions, I am guided by a mission to empower technology
                   with practical and academic insights. My core competencies lie in crafting robust
                   code and fostering learning environments, reflecting my dedication to quality and
-                  growth. At Epic, I embraced the challenge of enhancing software that impacts
-                  lives, aligning my efforts with the company's vision for transformative
-                  healthcare.
+                  growth.
                 </p>
               </Card.Body>
             </Card>
