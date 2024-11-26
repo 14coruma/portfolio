@@ -3,6 +3,17 @@ import { TimelineEvent } from "./TimelineEvent";
 
 const TimelineData = [
     new TimelineEvent(
+        "Appalachian Trail",
+        "",
+        "",
+        new Date(2024, 2),
+        new Date(2024, 7),
+        <p>Describe my hike</p>,
+        <FaGlobeAmericas/>,
+        false,
+        "light"
+    ),
+    new TimelineEvent(
         "Software Developer",
         "Epic",
         "Verona, WI",
