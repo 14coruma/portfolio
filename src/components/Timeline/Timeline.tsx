@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Container, Row, Col, ListGroup, Card, Accordion, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Card, Button, Modal } from 'react-bootstrap';
 import { FaBriefcase, FaGraduationCap, FaGlobeAmericas } from 'react-icons/fa'; // Optionally use icons for added flair
 
 const Timeline = () => {
