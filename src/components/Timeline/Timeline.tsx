@@ -1,146 +1,59 @@
 import { useState } from 'react';
 import { Container, Row, Col, ListGroup, Card, Button, Modal } from 'react-bootstrap';
 import { FaBriefcase, FaGraduationCap, FaGlobeAmericas } from 'react-icons/fa'; // Optionally use icons for added flair
+import { TimelineEvent } from './TimelineEvent';
 
 const Timeline = () => {
-  const timelineData = [
-    {
-      type: 'Travel',
-      title: 'Appalachian Trail',
-      date: 'Apr 2024 - Jul 2024',
-      description:
-      <>
-        <p>
-          Hiked 1,030 miles of trail through the Appalachian Mountains. Traveled north through
-          GA, NC, and TN, then continuing in WV, MD, PA, NJ, NY, CT, MA, and VT.
-        </p>
-      </>,
-      icon: <FaGlobeAmericas />,
-    },
-    {
-      type: 'Experience',
-      title: 'Software Developer at Epic',
-      date: 'Oct 2021 - Feb 2024',
-      description:
-      <>
-        <p>
-          Responsible for the research, design, and development of projects for SlicerDicer, a
-          medical data analytics platform. Web application development using MVC and MVVM
-          architectures. Area expert for data import and export designs. Mentored two new hires
-          through training and their first projects.Interviewed over 100 applicants for software
-          developer role.
-        </p>
-        <em>Project ownership:</em>
-        <ul>
-          <li>User-friendly administrative build activity (FDS Editor).</li>
-          <li>Distribution and access control for user-imported data (Data Gateway).</li>
-          <li>Reduced size of cached sessions by ~60% by deduplicating and compressing data.</li>
-          <li>Export summarized result data to excel.</li>
-        </ul>
-      </>,
-      icon: <FaBriefcase />,
-    },
-    {
-      type: 'Education',
-      title: 'MS in Computer Science',
-      date: 'Aug 2019 - May 2021',
-      description: 
-      <>
-        <p>Studied at Indiana University - Bloomington.</p>
-        <ul>
-          <li>ML, Computer Vision, Graphics, Elements of AI, Algorithms, Cryptography - GPA 3.91</li>
-          <li>Vision-based puzzle solver, using Naïve Bayes, TensorFlow CNN, and classic AI algorithms.</li>
-          <li>RandWire (Xie et. al.ICCV 2019) implementation via graph-theoretic DAG generators.</li>
-        </ul>
-      </>,
-      icon: <FaGraduationCap />,
-    },
-    {
-      type: 'Experience',
-      title: 'Associate Instructor at Indiana University - Bloomington',
-      date: 'Aug 2019 - May 2021',
-      description:
-      <>
-        <p>
-          Deliver weekly discussions and recitations, administer tests and quizzes, and
-          complete course grading for B401 - Fundamentals of Computing Theory.
-        </p>
-      </>,
-      icon: <FaBriefcase />,
-    },
-    {
-      type: 'Experience',
-      title: 'Web Developer at CCEL (Calvin University)',
-      date: 'Apr 2019 - Aug 2019',
-      description:
-      <>
-        <ul>
-          <li>Performed site visual redesign using Bootstrap, wrote database management scripts,
-            and completed a mobile-friendly OCR book activity. Site redesign is still used today.</li>
-          <li>Worked in a tight-knit, agile team to quickly deliver new features and high-quality
-            code</li>
-        </ul>
-      </>,
-      icon: <FaBriefcase />,
-    },
-    {
-      type: 'Education',
-      title: 'BCS in Computer Science; BS in Mathematics',
-      date: 'Aug 2014 - Dec 2018',
-      description: 
-      <>
-        <p>Studied at Calvin University.</p>
-        <ul>
-          <li>Projects in AI, Web Dev, HPC, Graphics, and Mathematics - GPA 3.88</li>
-          <li>Academic tutor for 3.5 years, helping students excel in CS, math, and engineering.</li>
-        </ul>
-      </>,
-      icon: <FaGraduationCap />,
-    },
-    {
-      type: 'Experience',
-      title: 'Undergraduate Research (REU) at New Mexico Tech',
-      date: 'May 2018 - Aug 2018',
-      description:
-      <>
-        <p>Created a novel method of PDF malware detection using ML and CV techniques.</p>
-        <p>
-          "Robust PDF Malware Detection with Image Visualization and Processing
-          Techniques," 2019 2nd International Conference on Data Intelligence and Security (ICDIS) 
-          &nbsp;
-          <a href='https://ieeexplore.ieee.org/abstract/document/8855273'>https://ieeexplore.ieee.org/</a>
-        </p>
-      </>,
-      icon: <FaBriefcase />,
-    },
+  const events = [
+    new TimelineEvent(
+      "Experience 1",
+      "Organization 1",
+      "Location 1",
+      new Date("2024-03-01"),
+      new Date("2024-08-20"),
+      <p>My long description</p>,
+      <FaBriefcase/>,
+      true
+    ),
+    new TimelineEvent(
+      "Experience 2",
+      "Organization 2",
+      "Location 2",
+      new Date("2023-03-01"),
+      new Date("2023-08-20"),
+      <p>My long description</p>,
+      <FaGlobeAmericas/>,
+      false 
+    ),
+    new TimelineEvent(
+      "Experience 3",
+      "Organization 3",
+      "Location 3",
+      new Date("2023-07-01"),
+      new Date("2022-03-01"),
+      <p>My long description</p>,
+      <FaGraduationCap/>,
+      false 
+    ),
   ];
 
-  const [modalState, setModalState] = useState([false, false]);
-  function handleModalStateChange(id: number, show: boolean) {
-    const newState = [...modalState];
+  const [allModalState, setAllModalState] = useState(new Array(events.length).fill(false));
+
+  function setModalState(id: number, show: boolean) {
+    const newState = [...allModalState];
     newState[id] = show;
-    setModalState(newState);
+    setAllModalState(newState);
   }
+
+  function setModalStateWithId(id: number) {
+    return (show: boolean) => setModalState(id, show);
+  } 
 
   return (
     <section id="timeline" className="py-5">
       <Container>
         <Row className="justify-content-center">
           <Col>
-            <Card className="p-3" style={{height: '200px'}}>
-              <Card.Title>Experience</Card.Title>
-              <Card.Subtitle>Location</Card.Subtitle>
-              <Card.Text>Description</Card.Text>
-              <Button onClick={() => handleModalStateChange(0, true)}>See more</Button>
-              <Modal show={modalState[0]} onHide={() => handleModalStateChange(0, false)} centered>
-                <Modal.Header closeButton>
-                  <Modal.Title>Experience</Modal.Title>
-                </Modal.Header>                
-                <Modal.Body>
-                  Summary of my experience!
-                </Modal.Body>
-              </Modal>
-            </Card>
           </Col>
           <Col xs={1}>
             <div className="vr" style={{height: '200px'}}></div>

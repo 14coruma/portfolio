@@ -1,7 +1,7 @@
 import ContactInfo from "./components/ContactInfo"
 import Projects from "./components/Projects"
 import Summary from "./components/Summary"
-import Timeline from "./components/Timeline"
+import Timeline from "./components/Timeline/Timeline"
 
 function App() {
   return (
