@@ -26,7 +26,7 @@ const TimelineData = [
     ),
     new TimelineEvent(
         "Master's in CS",
-        "Indiana University - Bloomington",
+        "Indiana University",
         "Bloomington, IN",
         new Date(2021, 4),
         new Date(2021, 4),
@@ -37,7 +37,7 @@ const TimelineData = [
     ),
     new TimelineEvent(
         "Associate Instructor",
-        "Indiana University - Bloomington",
+        "Indiana University",
         "Bloomington, IN",
         new Date(2019, 7),
         new Date(2021, 4),
@@ -48,7 +48,7 @@ const TimelineData = [
     ),
     new TimelineEvent(
         "Web Developer",
-        "CCEL - Calvin University",
+        "CCEL",
         "Grand Rapids, MI",
         new Date(2019, 0),
         new Date(2019, 7),
@@ -80,7 +80,7 @@ const TimelineData = [
         "light"
     ),
     new TimelineEvent(
-        "Research (REU)",
+        "Research",
         "New Mexico Tech",
         "Socorro, NM",
         new Date(2018, 4),

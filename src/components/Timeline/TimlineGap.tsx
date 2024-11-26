@@ -20,7 +20,7 @@ export interface TimelineGapComponentProps {
 const TimelineGapComponent = (props: TimelineGapComponentProps) => {
     const {event} = props;
     const eventDuration = event.durationInMonths();
-    const height = `${Math.max(eventDuration, 8)}em`;
+    const height = `${Math.max(eventDuration, 10)}em`;
 
     return (
         <div className="vr" style={{height: height}}/>

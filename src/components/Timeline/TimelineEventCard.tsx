@@ -10,7 +10,7 @@ const TimelineEventCard = (props: TimelineEventCardProps) => {
     const {event, setShowModal} = props;
 
     const eventDuration = event.durationInMonths();
-    const cardHeight = `${Math.max(eventDuration, 8)}em`;
+    const cardHeight = `${Math.max(eventDuration, 10)}em`;
     const showLocation = event.organization != "";
     const locationText = event.organization;
     const dateFormat: Intl.DateTimeFormatOptions = {
