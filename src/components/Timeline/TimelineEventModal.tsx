@@ -1,11 +1,11 @@
 import { Modal } from "react-bootstrap";
 import { TimelineEvent } from "./TimelineEvent";
 
-interface TimelineEventModalProps {
+export interface TimelineEventModalProps {
     event: TimelineEvent,
     showModal: boolean,
     setShowModal: (show: boolean) => void
-};
+}
 
 const TimelineEventModal = (props: TimelineEventModalProps) => {
     const { event, showModal, setShowModal } = props;

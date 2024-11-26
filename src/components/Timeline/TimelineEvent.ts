@@ -7,12 +7,13 @@ export class TimelineEvent {
         public readonly endDate: Date,
         public readonly description: JSX.Element,
         public readonly icon: JSX.Element,
-        public readonly drawEventOnLeft: boolean
+        public readonly drawEventOnLeft: boolean,
+        public readonly cardColor: string
     ) { }
     
-    public static durationInMonths(startDate: Date, endDate: Date): number {
-        const yearDiff = endDate.getFullYear() - startDate.getFullYear();
-        const monthDiff = endDate.getMonth() - endDate.getMonth();
+    public durationInMonths(): number {
+        const yearDiff = this.endDate.getFullYear() - this.startDate.getFullYear();
+        const monthDiff = this.endDate.getMonth() - this.startDate.getMonth();
         return yearDiff * 12 + monthDiff;
     }
 }

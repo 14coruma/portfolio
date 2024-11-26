@@ -1,34 +1,37 @@
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { TimelineEvent } from "./TimelineEvent";
 
-interface TimelineEventCardProps {
+export interface TimelineEventCardProps {
     event: TimelineEvent,
     setShowModal: (show: boolean) => void
-};
+}
 
 const TimelineEventCard = (props: TimelineEventCardProps) => {
     const {event, setShowModal} = props;
 
-    const eventDuration = TimelineEvent.durationInMonths(event.startDate, event.endDate);
-    const cardHeight = `${eventDuration * 3}em`;
+    const eventDuration = event.durationInMonths();
+    const cardHeight = `${Math.max(eventDuration, 8)}em`;
     const showLocation = event.organization != "";
-    const locationText = event.organization + " - " + event.location;
+    const locationText = event.organization;
     const dateFormat: Intl.DateTimeFormatOptions = {
         year: 'numeric',
-        month: 'short',
-        day: 'numeric'
+        month: 'short'
     };
-    const startDateText = event.startDate.toLocaleDateString('en-US', dateFormat);
+    const showStartDate = event.drawEventOnLeft;
+    const startDateText = showStartDate ? event.startDate.toLocaleDateString('en-US', dateFormat) + " - " : "";
     const endDateText = event.endDate.toLocaleDateString('en-US', dateFormat);
-    const dateRangeText = `${startDateText} - ${endDateText}`;
+    const dateRangeText = `${startDateText}${endDateText}`;
 
     return (
-        <Card className="p-3" style={{height: cardHeight}}>
-            <Card.Title>{event.title}</Card.Title>
+        <Card className="p-3" style={{height: cardHeight}} bg={event.cardColor} text={event.cardColor === "light" ? "dark" : "white"}>
+            <Card.Title>
+                {event.icon} &nbsp;
+                {event.title}
+                </Card.Title>
             { showLocation ? <Card.Subtitle>{locationText}</Card.Subtitle> : <></> }
             <Card.Text>
-                <p>{dateRangeText}</p>
-                <Button onClick={() => setShowModal(true)}>See more</Button>
+                <p className="mb-0">{dateRangeText}</p>
+                <p className={"text-primary h6"} role="button" onClick={() => setShowModal(true)}>See more</p>
             </Card.Text>
         </Card>
     );
